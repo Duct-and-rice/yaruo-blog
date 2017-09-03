@@ -9,7 +9,7 @@ task :deploy do
     cd "_deploy" do
         sh "git add ."
         message = "deploy at #{Time.now}"
-        sh "git commit -m #{message}"
+        sh "git commit -m '#{message}'"
         sh "git push"
     end
 end
