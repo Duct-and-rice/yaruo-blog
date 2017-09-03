@@ -9,3 +9,8 @@ permalink: /about/
 
 # このブログの構成について
 Jekyllで構築しGithub Pagesで公開しています。
+
+# 謝辞
+このブログではJekyll、whiteglass、Saitamaarフォント、Googleフォントを使用しています。
+
+また、Saitamaarフォントに関しては配布がHTTPなので一回無断で再配布という形を取らせていただきます。お叱りを受けたらすぐやめます。
