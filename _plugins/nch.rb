@@ -2,6 +2,7 @@ require 'cgi'
 require 'open-uri'
 require 'yaml'
 require 'faraday'
+require 'digest/sha2'
 module Jekyll
     class Post
         attr_accessor :header, :body
@@ -20,15 +21,32 @@ module Jekyll
         end
         def download
             url=@url
+            url=url.strip.gsub('/$','')
+            digest=Digest::MD5.hexdigest(url)
+            path="dats/#{digest}.dat"
             header = {"User-Agent" => "Monazilla/1.00"}
             begin
-                body = open(url, 'r:cp932', header){|f|
-                    body=f.read
-                    body=body.encode(Encoding::UTF_8)
-                    body
-                }
+                if File.exist?(path) then
+                    body = File.open(path, mode = "r"){|f|
+                        body=f.read 
+                        body
+                    }
+                else
+                    body = open(url, 'r:cp932', header){|w|
+                        body=w.read
+                        body=body.encode(Encoding::UTF_8)
+                        File.open(path, mode = "w"){|f|
+                            f.puts body
+                        }
+                        body
+                    }
+                end
             rescue OpenURI::HTTPError => e
                 raise DownloadError.new(e.message)
+            rescue SystemCallError => e
+                raise SystemCallError.new(e.message)
+            rescue IOError => e
+                raise IOError.new(e.message)
             end
             body
         end
@@ -57,7 +75,6 @@ module Jekyll
     end
 
     class NchPage < Page
-        @@thread_memo={}
         def initialize(site, base, t_url, range, title, id, episode_num)
             @site = site
             @base = base
@@ -115,4 +132,3 @@ module Jekyll
         end
     end
 end
-
