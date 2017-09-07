@@ -11,6 +11,7 @@ theme: jekyll-whiteglass
 plugins:
     - jekyll-archives
     - jekyll-paginate
+    - jekyll-seo-tag
     - jekyll-sitemap
 permalink: /:year/:month/:day/:title/
 paginate_path: /posts/:num/
