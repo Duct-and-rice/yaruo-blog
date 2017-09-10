@@ -10,6 +10,6 @@ task :deploy do
         sh "git add ."
         message = "deploy at #{Time.now}"
         sh "git commit -m '#{message}'"
-        sh "git push"
+        sh "git push --quiet https://${GH_TOKEN}:github.com/duct-and-rice/yaruo-blog >/dev/null 2>&1"
     end
 end
