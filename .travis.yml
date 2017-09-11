@@ -2,7 +2,7 @@ language: ruby
 rvm:
 - 2.3.3
 
-script: bundle exec rake deploy --silent 1> /dev/null 2> /dev/null
+script: .travis-deploy.sh
 
 env:
   global:
