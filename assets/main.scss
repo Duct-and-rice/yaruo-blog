@@ -57,14 +57,14 @@ $on-laptop:        800px;
     line-height: 18px;
     text-shadow: none;
     color: rgb(0, 0, 0);
-    
+
     -moz-text-size-adjust: none;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    
+
     word-break: break-all;
     white-space: nowrap;
-    
+
     display: block;
 
     margin: 20px 0 !important;
@@ -84,12 +84,39 @@ $on-laptop:        800px;
 .post-meta {
 }
 
+
+
 .post-share{
     text-align: right;
     list-style: none;
     padding: 0;
     li {
-        display: inline;
+        background: $grey-color-dark;
+        display: inline-block;
+        line-height: 1rem;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px;
+        a {
+            display: block;
+            color: $grey-color-light;
+            text-decoration: none;
+        }
+        &.twitter {
+            background: #55ACEE;
+        }
+        &.facebook {
+            background: #3B5998;
+        }
+        &.google {
+            background: #DD4B39;
+        }
+        &.hatenabookmark {
+            background: #008FDE;
+        }
     }
 
     .sr-only{
@@ -102,6 +129,26 @@ $on-laptop:        800px;
         width: 1px;
         overflow: hidden;
     }
+}
+
+.lsf, .lsf-icon:before {
+    font-family: 'LigatureSymbols';
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    -ms-text-rendering: optimizeLegibility;
+    -o-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -ms-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+.lsf-icon:before {
+    content:attr(title);
+    margin-right:0.3em;
+    font-size:130%;
 }
 
 // Import partials from the `whiteglass` theme.
