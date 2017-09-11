@@ -23,28 +23,20 @@ layout: default
             {% endif %}
             {% if page.categories != empty %} • {% include category_links.html categories=page.categories %}{% endif %}
         </p>
-        <ul class="post-share">
-            <li class="twitter">
+        <p class="post-share">
                 <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf twitter">
                     twitter
                 </a>
-            </li>
-            <li class="hatenabookmark">
                 <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf facebook">
                     facebook
                 </a>
-            </li>
-            <li class="google">
                 <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf google">
                     google
                 </a>
-            </li>
-            <li class="hatenabookmark">
                 <a href="http://b.hatena.ne.jp/entry/{{ site.url }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf hatenabookmark">
                     hatenabookmark
                 </a>
-            </li>
-        </ul>
+        </p>
     </div>
   </header>
 
