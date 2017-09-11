@@ -24,9 +24,9 @@ layout: default
             {% if page.categories != empty %} • {% include category_links.html categories=page.categories %}{% endif %}
         </p>
         <ul class="post-share">
-            <li><a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{ site.twitter_username }}&related={{ site.twitter_username }}" target="_blank" title="Tweet"><img alt="Tweet" src="/assets/icons/Twitter.png" /></a></li>
-            <li><a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="/assets/icons/Facebook.png" /></a></li>
-            <li><a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" target="_blank" title="Share on Google+"><img alt="Share on Google+" src="/assets/icons/Google+.png" /></a></li>
+            <li><a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{ site.twitter_username }}&related={{ site.twitter_username }}" target="_blank" title="Tweet"><img alt="Tweet" src="{{ site.baseurl }}/assets/icons/Twitter.png" /></a></li>
+            <li><a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="{{ site.baseurl }}/assets/icons/Facebook.png" /></a></li>
+            <li><a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" target="_blank" title="Share on Google+"><img alt="Share on Google+" src="{{ site.baseurl }}/assets/icons/Google+.png" /></a></li>
         </ul>
     </div>
   </header>
