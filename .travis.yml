@@ -2,7 +2,7 @@ language: ruby
 rvm:
 - 2.3.3
 
-script: .travis-deploy.sh
+script: ./.travis-deploy.sh
 
 env:
   global:
