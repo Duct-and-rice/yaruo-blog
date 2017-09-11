@@ -1,2 +1,2 @@
 #!/bin/bash
-bundle exec deploy 1>/dev/null 2>/dev/null
+bundle exec rake deploy 1>/dev/null 2>/dev/null
