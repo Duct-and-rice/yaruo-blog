@@ -90,7 +90,7 @@ $on-laptop:        800px;
     text-align: right;
     list-style: none;
     padding: 0;
-    li {
+    a {
         background: $grey-color-dark;
         display: inline-block;
         line-height: 1rem;
@@ -100,10 +100,18 @@ $on-laptop:        800px;
         text-align: center;
         vertical-align: middle;
         padding: 5px;
-        a {
-            display: block;
+        text-decoration: none;
+        color: $grey-color-light;
+
+        transition: .3s;
+        &:hover, &:visited{
             color: $grey-color-light;
             text-decoration: none;
+        }
+        &:hover{
+            -ms-transform: translateY(4px);
+            -webkit-transform: translateY(4px);
+            transform: translateY(4px);
         }
         &.twitter {
             background: #55ACEE;
