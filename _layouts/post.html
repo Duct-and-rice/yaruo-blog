@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    {% if page.external-url %}
+      <h1 class="post-title" itemprop="name headline"><a href="{{ page.external-url }}">{{ page.title | escape }} &rarr;</a></h1>
+    {% else %}
+      <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+    {% endif %}
+    <div class="post-head">
+        <p class="post-meta">
+            <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+                {{ page.date | date: "%b %-d, %Y" }}
+            </time>
+            {% if page.author %} • 
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+                <span itemprop="name">
+                    {{ page.author }}
+                </span>
+            </span>
+            {% endif %}
+            {% if page.categories != empty %} • {% include category_links.html categories=page.categories %}{% endif %}
+        </p>
+        <ul class="post-share">
+            <li><a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{ site.twitter_username }}&related={{ site.twitter_username }}" target="_blank" title="Tweet"><img alt="Tweet" src="/assets/icons/Twitter.png" /></a></li>
+            <li><a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" target="_blank"><img alt="Share on Facebook" src="/assets/icons/Facebook.png" /></a></li>
+            <li><a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" target="_blank" title="Share on Google+"><img alt="Share on Google+" src="/assets/icons/Google+.png" /></a></li>
+        </ul>
+    </div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+      {{ content }}
+  </div>
+
+</article>
