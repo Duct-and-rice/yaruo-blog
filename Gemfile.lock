@@ -4,10 +4,12 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     colorator (1.1.0)
+    equatable (0.5.0)
     faraday (0.13.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     forwardable-extended (2.6.0)
+    hitimes (1.2.6)
     jekyll (3.5.2)
       addressable (~> 2.4)
       colorator (~> 1.0)
@@ -46,7 +48,11 @@ GEM
     minima (2.1.1)
       jekyll (~> 3.3)
     multipart-post (2.0.0)
+    necromancer (0.4.0)
     nuggets (1.5.0)
+    pastel (0.7.1)
+      equatable (~> 0.5.0)
+      tty-color (~> 0.4.0)
     pathutil (0.14.0)
       forwardable-extended (~> 2.6)
     public_suffix (3.0.0)
@@ -61,6 +67,19 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+    timers (4.1.2)
+      hitimes
+    tty-color (0.4.2)
+    tty-cursor (0.5.0)
+    tty-prompt (0.13.2)
+      necromancer (~> 0.4.0)
+      pastel (~> 0.7.0)
+      timers (~> 4.1.2)
+      tty-cursor (~> 0.5.0)
+      tty-reader (~> 0.1.0)
+    tty-reader (0.1.0)
+      wisper (~> 2.0.0)
+    wisper (2.0.0)
 
 PLATFORMS
   ruby
@@ -76,6 +95,7 @@ DEPENDENCIES
   jekyll-whiteglass
   minima (~> 2.0)
   rake
+  tty-prompt
   tzinfo-data
 
 BUNDLED WITH

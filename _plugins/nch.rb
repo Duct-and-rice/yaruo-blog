@@ -134,8 +134,9 @@ module Jekyll
             yml=YAML.load(content)
             url = yml['url']
             range = yml['range']
+            range = (range['min']-1)..(range['max']-1)
             posts = Thr.new(url)
-            posts = posts.posts[range[0]-1..range[1]-1]
+            posts = posts.posts[range]
 
             tmp=''
             posts.each_with_index do |res,i|
