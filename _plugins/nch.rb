@@ -124,7 +124,7 @@ module Jekyll
                             posts[i][1] = ''
                         end
                     else
-                        posts[i][2] = e.to_xml.gsub(/[\r\n]/,'').match(/<dd>(.+)<\/dd>/)[1]
+                        posts[i][2] = e.to_xml.gsub(/[\r\n]/,'').match(/<dd>(.+)<\/dd>/)[1].gsub(/<a.*>/,'').gsub(/<\/a>/,'')
                         i+=1
                     end
                 }
