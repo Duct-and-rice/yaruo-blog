@@ -230,7 +230,7 @@ module Jekyll
                 tmp << res.header
                 tmp << %Q{</dt>\n}
                 tmp << %Q{<dd class="res-body aa">\n}
-                tmp << res.body
+                tmp << res.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>')
                 tmp << %Q{</dd>\n}
                 tmp << %Q{</dl>\n}
                 tmp << %Q{</dr>\n\n}
