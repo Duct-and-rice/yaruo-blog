@@ -6,5 +6,6 @@ _site/
 .sass-cache/
 .jekyll-metadata
 _deploy
+cache
 
 # End of https://www.gitignore.io/api/jekyll
