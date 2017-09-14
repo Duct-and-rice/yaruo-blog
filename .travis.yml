@@ -6,3 +6,7 @@ env:
   global:
   - secure: tfvu9cDYpYYe14HhURHvoB6lNv+dlwdLc0l3DGPbCZ6F+beOoMR+TvQNPEHfigUHvUhQZJkXelBAmmDqp2nY8zRSVRS5UEhc7qds3ILLkBVmi7O6Da9Vm33tZpoThMKWQAUTYTz6igilFIUNBS3bKaG8Myh5JP003WGwe+QUQDfPDRkigYo5EkSfFqdvyIs4JJQ2NMdLucXM/+MysHuhSOi5NVc03PmryOHcZCLXgFxZgGbHT4vx/Ufp1quLnwZeUE0Y/bnQ0QeT+T88eRe20T2796FWAPoTH85Ni8gu95umUFpORIRzJszEBg4MiKYl2FOpzhix8hvKH11Hp1iNeLyzSf+wNl/GpcoMIxudoROv+YcXyyv2QuYU5a7xty/ZL+FmncNAcA+41zNAQcxzpw7fc2RqsTtx4kau2CDY8BXSpjajo+Ni/yXi2GJgUe8A92T8rfPT7cZD/FMe9kChhniF/YklkkskS0lHD+ns0BbeSUFRqNgOTB9GzEv7LcAKfEV+u0rJkG7Ast2V1ePUn+R/PKdif+Y+IdLCNhMeqyVg7DtC+ukJKmDqBhEshBolW8nSVNGb+xTLIDVBcd/cOGsV6afCPCGnXKXyg/+fEYPnEnVEcO1W8ZMhr79XKvF8Xof6vc966erLLm7qitnEfmPy5oWu2bWa1nCebRUCor0=
 sudo: false
+
+branches:
+  only: 
+    - master
