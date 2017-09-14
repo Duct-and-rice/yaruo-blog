@@ -109,34 +109,36 @@ module Jekyll
                 body=body.encode(Encoding::UTF_8)
                 body
             }
-            doc = Oga.parse_html(html)
+            if url.include? 'jbbs.shitaraba.net'
+                doc = Oga.parse_html(html)
 
-            i = 0
-            posts = []
-            doc.xpath('//body/dl/*').each {|e|
-                posts[i] ||= []
-                if e.name=='dt'
-                    posts[i][0] = e.text
-                    if e.xpath('a[position()=2]').attribute('href').length>0
-                        posts[i][1] = e.xpath('a[position()=2]').attribute('href')[0].value.match(/mailto:(.+)/)[1]
+                i = 0
+                posts = []
+                doc.xpath('//body/dl/*').each {|e|
+                    posts[i] ||= []
+                    if e.name=='dt'
+                        posts[i][0] = e.text
+                        if e.xpath('a[position()=2]').attribute('href').length>0
+                            posts[i][1] = e.xpath('a[position()=2]').attribute('href')[0].value.match(/mailto:(.+)/)[1]
+                        else
+                            posts[i][1] = ''
+                        end
                     else
-                        posts[i][1] = ''
+                        posts[i][2] = e.to_xml.gsub(/[\r\n]/,'').match(/<dd>(.+)<\/dd>/)[1]
+                        i+=1
                     end
-                else
-                    posts[i][2] = e.to_xml.gsub(/[\r\n]/,'').match(/<dd>(.+)<\/dd>/)[1]
-                    i+=1
-                end
-            }
-            posts=posts.map {|res|
-                m = res[0].match(/(\d+) ：(.+)：(.+)/)
-                i = m[1]
-                name = m[2]
-                metadata = m[3]
-                mail = res[1]
-                body = res[2]
-                Post.new(i, name,mail,metadata,body)
-            }
-            posts
+                }
+                posts=posts.map {|res|
+                    m = res[0].match(/(\d+) ：(.+)：(.+)/)
+                    i = m[1]
+                    name = m[2]
+                    metadata = m[3]
+                    mail = res[1]
+                    body = res[2]
+                    Post.new(i, name,mail,metadata,body)
+                }
+                posts
+            end
         end
 
         def load_from_cache
