@@ -35,24 +35,27 @@ end
 task :new_thread do
     prompt = TTY::Prompt.new
     url = prompt.ask("URL?:", required: true) {|q| 
-        q.validate /https?:\/\/.+\/test\/read\.cgi\/\S+\/\d+/
+        q.validate /(https?:\/\/.+)\/(?:test|bbs)\/(read(?:_archive)?\.cgi)\/(.+)\/(\d+)\/?/
     }
     range = prompt.ask("Range?:", convert: :range, required: true) {|q| q.in('1-10000')}
-    title = prompt.ask("Title?:", convert: :range, required: true)
-    categories_list = %w(yaruo-thread internet-casefile)
+    title = prompt.ask("Title?:", required: true)
+    id = prompt.ask("ID?:", required: true)
+    categories_list = %w(yaruo-thread internet-casefile short)
     categories = prompt.multi_select("Category?:", categories_list)
     min = range.min
     max = range.max
     body = <<EOS
 ---
 layout: post
-title:  ""
+title:  "#{title}"
 date:   #{Time.now}
 categories: #{categories.join(' ')}
 ---
 
 url: #{url}
-range: {min: #{min}, min: #{min}}
+range: {min: #{min}, max: #{max}}
 EOS
-    print body
+    open("_posts/#{Time.now.strftime("%Y-%m-%d")}-#{id}.yaruo", "w") {|y|
+        y.puts(body)
+    }
 end

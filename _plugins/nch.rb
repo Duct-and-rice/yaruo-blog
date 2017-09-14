@@ -3,6 +3,8 @@ require 'yaml'
 require 'faraday'
 require 'digest/sha2'
 require 'csv'
+require 'oga'
+
 module Jekyll
     class Post
         attr_accessor :header, :index, :name, :mail, :metadata, :body
@@ -27,18 +29,69 @@ module Jekyll
             @digest=Digest::MD5.hexdigest(@url)
             @path="cache/#{@digest}.csv"
         end
-        def download_dat
+
+        def fetch
             url=@url.strip.gsub('/$','')
-            part = url.match(/(https?:\/\/.+)\/test\/read\.cgi\/(.+)\/(\d+)\/?/).to_a
-            dat_url = "#{part[1]}/#{part[2]}/dat/#{part[3]}.dat"
+            part = url.match(/(https?:\/\/.+)\/(?:test|bbs)\/(read(?:_archive)?\.cgi)\/(.+)\/(\d+)\/?/).to_a
+            host = part[1]
+            cgi = part[2]
+            board = part[3]
+            thr = part[4]
+
+            mode=nil
+            if host.include? 'jbbs.shitaraba.net'
+                if cgi == 'read.cgi'
+                    dat_url = "#{host}/bbs/rawmode.cgi/#{board}/#{thr}"
+                    mode = 'shitaraba'
+                else
+                    mode = 'log'
+                end
+            else
+                dat_url = "#{host}/#{board}/dat/#{thr}.dat"
+                mode = '2ch'
+            end
+
+            body=nil
+            if mode != 'log'
+                body = get_dat(dat_url)
+            end
+
+            if !body
+                posts = get_html(url)
+            else
+                if mode == 'shitaraba'
+                    posts=body.each_line.map { |line|
+                        line.chomp!
+                        i, name, mail, metadata, body = line.split('<>')
+                        Post.new(i, name,mail,metadata,body)
+                    }
+                else
+                    i=0
+                    posts=body.each_line.map { |line|
+                        line.chomp!
+                        name, mail, metadata, body = line.split('<>')
+                        i+=1
+                        Post.new(i, name,mail,metadata,body)
+                    }
+                end
+            end
+            posts
+        end
+
+        def get_dat(dat_url)
             header = {"User-Agent" => "Monazilla/1.00"}
             begin
                 puts "  DAT Downloading"
-                body = open(dat_url, 'r:cp932', header,) {|w|
-                               body=w.read
-                               body=body.encode(Encoding::UTF_8)
-                               body
+                body = open(dat_url, 'r:cp932', header) {|w|
+                    if w.status.includes"200"
+                        body=w.read
+                        body=body.encode(Encoding::UTF_8)
+                        body
+                    else
+                        nil
+                    end
                 }
+                body
             rescue OpenURI::HTTPError => e
                 raise DownloadError.new(e.message)
             rescue SystemCallError => e
@@ -46,11 +99,41 @@ module Jekyll
             rescue IOError => e
                 raise IOError.new(e.message)
             end
-            i=0
-            posts=body.each_line.map { |line|
-                line.chomp!
-                name, mail, metadata, body = line.split('<>')
-                i+=1
+        end
+
+        def get_html(url)
+            header = {"User-Agent" => "Monazilla/1.00"}
+
+            html = open(url, 'r:eucjp') {|f|
+                body=f.read
+                body=body.encode(Encoding::UTF_8)
+                body
+            }
+            doc = Oga.parse_html(html)
+
+            i = 0
+            posts = []
+            doc.xpath('//body/dl/*').each {|e|
+                posts[i] ||= []
+                if e.name=='dt'
+                    posts[i][0] = e.text
+                    if e.xpath('a[position()=2]').attribute('href').length>0
+                        posts[i][1] = e.xpath('a[position()=2]').attribute('href')[0].value.match(/mailto:(.+)/)[1]
+                    else
+                        posts[i][1] = ''
+                    end
+                else
+                    posts[i][2] = e.to_xml.gsub(/[\r\n]/,'').match(/<dd>(.+)<\/dd>/)[1]
+                    i+=1
+                end
+            }
+            posts=posts.map {|res|
+                m = res[0].match(/(\d+) ：(.+)：(.+)/)
+                i = m[1]
+                name = m[2]
+                metadata = m[3]
+                mail = res[1]
+                body = res[2]
                 Post.new(i, name,mail,metadata,body)
             }
             posts
@@ -91,8 +174,8 @@ module Jekyll
 
         def load_posts
             load_from_cache || 
-                save_cache(download_dat)
-            
+                save_cache(fetch)
+
         end
 
         def to_liquid

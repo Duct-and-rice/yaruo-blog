@@ -3,6 +3,8 @@ GEM
   specs:
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    ansi (1.5.0)
+    ast (2.3.0)
     colorator (1.1.0)
     equatable (0.5.0)
     faraday (0.13.1)
@@ -50,6 +52,9 @@ GEM
     multipart-post (2.0.0)
     necromancer (0.4.0)
     nuggets (1.5.0)
+    oga (2.11)
+      ast
+      ruby-ll (~> 2.1)
     pastel (0.7.1)
       equatable (~> 0.5.0)
       tty-color (~> 0.4.0)
@@ -61,6 +66,9 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rouge (1.11.1)
+    ruby-ll (2.1.2)
+      ansi
+      ast
     safe_yaml (1.0.4)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
@@ -94,6 +102,7 @@ DEPENDENCIES
   jekyll-tagging
   jekyll-whiteglass
   minima (~> 2.0)
+  oga
   rake
   tty-prompt
   tzinfo-data
