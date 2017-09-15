@@ -83,7 +83,7 @@ module Jekyll
             begin
                 puts "  DAT Downloading"
                 body = open(dat_url, 'r:cp932', header) {|w|
-                    if w.status.includes"200"
+                    if w.status.include?"200"
                         body=w.read
                         body=body.encode(Encoding::UTF_8)
                         body
