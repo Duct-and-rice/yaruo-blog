@@ -24,16 +24,16 @@ layout: default
             {% if page.categories != empty %} • {% include category_links.html categories=page.categories %}{% endif %}
         </p>
         <p class="post-share">
-        <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ site.basename }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf twitter">
+        <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf twitter">
                     twitter
                 </a>
-                <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ site.basename }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf facebook">
+                <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf facebook">
                     facebook
                 </a>
-                <a href="https://plus.google.com/share?url={{ site.url }}{{ site.basename }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf google">
+                <a href="https://plus.google.com/share?url={{ site.url }}{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf google">
                     google
                 </a>
-                <a href="http://b.hatena.ne.jp/entry/{{ site.url }}{{ site.basename }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf hatenabookmark">
+                <a href="http://b.hatena.ne.jp/entry/{{ site.url }}{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf hatenabookmark">
                     hatenabookmark
                 </a>
         </p>
