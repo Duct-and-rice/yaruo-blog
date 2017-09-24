@@ -14,3 +14,6 @@ Jekyllで構築しGithub Pagesで公開しています。
 このブログではJekyll、whiteglass、Saitamaarフォント、Googleフォント、Simple Share Buttonsを使用しています。
 
 また、Saitamaarフォントに関しては配布がHTTPなので一回無断で再配布という形を取らせていただきます。お叱りを受けたらすぐやめます。
+
+# 寄付
+Bitcoin:1GN2CmNsXsZEXTy6mwn3nxcc5rDETGSg3p
