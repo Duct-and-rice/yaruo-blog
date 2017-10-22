@@ -221,6 +221,9 @@ module Jekyll
             range = yml['range']
             range = (range['min']-1)..(range['max']-1)
             posts = Thr.new(url)
+            if range.end < posts.posts.size-1
+                posts.fetch
+            end
             posts = posts.posts[range]
 
             tmp=''
