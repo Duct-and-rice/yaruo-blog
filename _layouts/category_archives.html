@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="home">
 
-  <h1 class="page-heading">Archive of {{ page.type }} '{{ page.title | escape | toja }}'</h1>
+    <h1 class="page-heading">{{ page.type | escape | toja }}「{{ page.title | escape | toja }}」に属する記事の一覧 </h1>
 
   {% capture site_lang %}{{ site.lang | default: "en" }}{% endcapture %}
 
