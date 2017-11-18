@@ -3,11 +3,11 @@
 @font-face {
     font-family:'Stmr';
     src:
-        url('/{{ site.baseurl }}fonts/Saitamaar.woff2') format('woff2'),
-        url('/{{ site.baseurl }}fonts/Saitamaar.woff') format('woff'),
-        url('/{{ site.baseurl }}fonts/Saitamaar.ttf') format('truetype'),
-        url('/{{ site.baseurl }}fonts/Saitamaar.eot'),
-        url('/{{ site.baseurl }}fonts/Saitamaar.eot?#iefix') format('embedded-opentype');
+        url('/{{ site.baseurl }}/fonts/Saitamaar.woff2') format('woff2'),
+        url('/{{ site.baseurl }}/fonts/Saitamaar.woff') format('woff'),
+        url('/{{ site.baseurl }}/fonts/Saitamaar.ttf') format('truetype'),
+        url('/{{ site.baseurl }}/fonts/Saitamaar.eot'),
+        url('/{{ site.baseurl }}/fonts/Saitamaar.eot?#iefix') format('embedded-opentype');
     font-weight:normal;
     font-display:auto;
 }
@@ -17,7 +17,7 @@
   font-family: 'Bitter';
   font-style: italic;
   font-weight: 400;
-  src: local('Bitter Italic'), local('Bitter-Italic'), url(https://{{ site.baseurl }}fonts.gstatic.com/s/bitter/v11/PX9NwOMMeyM1S_WWulmbfhTbgVql8nDJpwnrE27mub0.woff2) format('woff2');
+  src: local('Bitter Italic'), local('Bitter-Italic'), url(https://{{ site.baseurl }}/fonts.gstatic.com/s/bitter/v11/PX9NwOMMeyM1S_WWulmbfhTbgVql8nDJpwnrE27mub0.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
   font-display: fallback
 }
@@ -26,7 +26,7 @@
   font-family: 'Bitter';
   font-style: italic;
   font-weight: 400;
-  src: local('Bitter Italic'), local('Bitter-Italic'), url(https://{{ site.baseurl }}fonts.gstatic.com/s/bitter/v11/-t3SK6sofTjAH0MNf_tLaPesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  src: local('Bitter Italic'), local('Bitter-Italic'), url(https://{{ site.baseurl }}/fonts.gstatic.com/s/bitter/v11/-t3SK6sofTjAH0MNf_tLaPesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
   font-display: fallback
 }
@@ -35,7 +35,7 @@
   font-family: 'Bitter';
   font-style: normal;
   font-weight: 400;
-  src: local('Bitter Regular'), local('Bitter-Regular'), url(https://{{ site.baseurl }}fonts.gstatic.com/s/bitter/v11/Qt2dUzVlMd1bCOcZXl06LPesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  src: local('Bitter Regular'), local('Bitter-Regular'), url(https://{{ site.baseurl }}/fonts.gstatic.com/s/bitter/v11/Qt2dUzVlMd1bCOcZXl06LPesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
   font-display: fallback
 }
@@ -44,7 +44,7 @@
   font-family: 'Bitter';
   font-style: normal;
   font-weight: 400;
-  src: local('Bitter Regular'), local('Bitter-Regular'), url(https://{{ site.baseurl }}fonts.gstatic.com/s/bitter/v11/zfs6I-5mjWQ3nxqccMoL2A.woff2) format('woff2');
+  src: local('Bitter Regular'), local('Bitter-Regular'), url(https://{{ site.baseurl }}/fonts.gstatic.com/s/bitter/v11/zfs6I-5mjWQ3nxqccMoL2A.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
   font-display: fallback
 }
@@ -53,7 +53,7 @@
   font-family: 'Bitter';
   font-style: normal;
   font-weight: 700;
-  src: local('Bitter Bold'), local('Bitter-Bold'), url(https://{{ site.baseurl }}fonts.gstatic.com/s/bitter/v11/JGVZEP92dXgoQBG1CnQcfBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+  src: local('Bitter Bold'), local('Bitter-Bold'), url(https://{{ site.baseurl }}/fonts.gstatic.com/s/bitter/v11/JGVZEP92dXgoQBG1CnQcfBJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
   font-display: fallback
 }
@@ -62,19 +62,19 @@
   font-family: 'Bitter';
   font-style: normal;
   font-weight: 700;
-  src: local('Bitter Bold'), local('Bitter-Bold'), url(https://{{ site.baseurl }}fonts.gstatic.com/s/bitter/v11/evC1haE-MsorTl_A7_uSGVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+  src: local('Bitter Bold'), local('Bitter-Bold'), url(https://{{ site.baseurl }}/fonts.gstatic.com/s/bitter/v11/evC1haE-MsorTl_A7_uSGVtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
   font-display: fallback
 }
 
 @font-face {
     font-family: 'LigatureSymbols';
-    src: url('/{{ site.baseurl }}fonts/LigatureSymbols.eot');
-    src: url('/{{ site.baseurl }}fonts/LigatureSymbols.eot?#iefix') format('embedded-opentype'),
-         url('/{{ site.baseurl }}fonts/LigatureSymbols.woff') format('woff'),
-         url('/{{ site.baseurl }}fonts/LigatureSymbols.ttf') format('truetype'),
-         url('/{{ site.baseurl }}fonts/LigatureSymbols.svg#LigatureSymbols') format('svg');
-    src: url('/{{ site.baseurl }}fonts/LigatureSymbols.ttf') format('truetype');
+    src: url('/{{ site.baseurl }}/fonts/LigatureSymbols.eot');
+    src: url('/{{ site.baseurl }}/fonts/LigatureSymbols.eot?#iefix') format('embedded-opentype'),
+         url('/{{ site.baseurl }}/fonts/LigatureSymbols.woff') format('woff'),
+         url('/{{ site.baseurl }}/fonts/LigatureSymbols.ttf') format('truetype'),
+         url('/{{ site.baseurl }}/fonts/LigatureSymbols.svg#LigatureSymbols') format('svg');
+    src: url('/{{ site.baseurl }}/fonts/LigatureSymbols.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
