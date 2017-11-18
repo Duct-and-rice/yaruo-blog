@@ -1,6 +1,10 @@
 
 @charset "utf-8";
-{% capture fontdir %}{{ site.url }}/{{ site.baseurl }}/fonts/{% endcapture %}
+/*
+ https://cdn.rawgit.com/Duct-and-rice/yaruo-blog/1317c979/fonts/Saitamaar.ttf
+https://cdn.rawgit.com/Duct-and-rice/yaruo-blog/1317c979/fonts/Saitamaar.woff2
+ */
+{% assign fontdir ="https://cdn.rawgit.com/Duct-and-rice/yaruo-blog/1317c979/fonts/" %}
 @font-face {
     font-family:'Stmr';
     src:
