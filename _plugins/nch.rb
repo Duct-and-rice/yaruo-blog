@@ -175,9 +175,12 @@ module Jekyll
         end
 
         def load_posts
-            load_from_cache || 
-                save_cache(fetch)
-
+            cache = load_from_cache 
+            if cache && !ENV['JEKYLL_DEV'].nil?
+                return cache
+            end
+            return save_cache(fetch)
+            nil
         end
 
         def to_liquid
@@ -221,7 +224,7 @@ module Jekyll
             range = yml['range']
             range = (range['min']-1)..(range['max']-1)
             posts = Thr.new(url)
-            if range.end < posts.posts.size-1
+            if range.end < posts.posts.size-1 && ENV['JEKYLL_DEV'].nil?
                 posts.fetch
             end
             posts = posts.posts[range]
