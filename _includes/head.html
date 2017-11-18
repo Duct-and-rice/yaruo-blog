@@ -16,7 +16,22 @@
   <meta name="description" content="{{ description }}">
   {% if page.keywords %}<meta name="keywords" content="{{ page.keywords }}">{% endif %}
 
-  <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+  <!--<link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">-->
+
+  {% capture styles %}
+  {% include styles.scss %}
+  {% endcapture %}
+  <style>
+    {{ styles | scssify }}
+  </style>
+
+  {% capture fontStyles %}
+  {% include fonts.scss %}
+  {% endcapture %}
+  <style>
+    {{ fontStyles | scssify }}
+  </style>
+
   <link rel="canonical" href="{{ canonical }}">
 
   <link rel="icon" sizes="any" href="{{ "/favicon.svg" | relative_url }}" type="image/svg+xml">
