@@ -3,14 +3,14 @@
 
 @font-face {
     font-family:'Stmr';
-    src:url('fonts/Saitamaar.eot');
-    src:local('Saitamaar'),
-        url('fonts/Saitamaar.eot?#iefix') format('embedded-opentype'),
+    src:
         url('fonts/Saitamaar.woff2') format('woff2'),
         url('fonts/Saitamaar.woff') format('woff'),
-        url('fonts/Saitamaar.ttf') format('truetype');
+        url('fonts/Saitamaar.ttf') format('truetype'),
+        url('fonts/Saitamaar.eot'),
+        url('fonts/Saitamaar.eot?#iefix') format('embedded-opentype');
     font-weight:normal;
-    font-display:fallback;
+    font-display:auto;
 }
 
 /* latin-ext */
