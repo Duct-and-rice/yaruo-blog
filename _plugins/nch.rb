@@ -28,6 +28,8 @@ module Jekyll
             @url=url
             @digest=Digest::MD5.hexdigest(@url)
             @path="cache/#{@digest}.csv"
+            @@dat_cache||={}
+            @@html_cache||={}
         end
 
         def fetch
@@ -53,11 +55,13 @@ module Jekyll
 
             body=nil
             if mode != 'log'
-                body = get_dat(dat_url)
+                @@dat_cache[dat_url] ||= get_dat(dat_url)
+                body = @@dat_cache[dat_url]
             end
 
             if !body
-                posts = get_html(url)
+                @@html_cache[dat_url] ||= get_html(url)
+                posts = @@html_cache[dat_url]
             else
                 if mode == 'shitaraba'
                     posts=body.each_line.map { |line|
@@ -81,7 +85,7 @@ module Jekyll
         def get_dat(dat_url)
             header = {"User-Agent" => "Monazilla/1.00"}
             begin
-                puts "  DAT Downloading"
+                puts "  DAT Downloading:" + dat_url
                 body = open(dat_url, 'r:cp932', header) {|w|
                     if w.status.include?"200"
                         body=w.read
@@ -104,6 +108,7 @@ module Jekyll
         def get_html(url)
             header = {"User-Agent" => "Monazilla/1.00"}
 
+            puts "  HTML Downloading:" + url
             html = open(url, 'r:eucjp') {|f|
                 body=f.read
                 body=body.encode(Encoding::UTF_8)

@@ -5,3 +5,14 @@ main:
     url: /about/
   - title: "Archives"
     url: /archives/
+menu:
+  - title: "Ours"
+    stories:
+        - title: "AAで学ぶネット事件簿"
+          category: internet-casefile
+          description: "2065年から見た、「インターネット草創期」の歴史。"
+        - title: "短編"
+          category: short
+          description: "SCPからデリュケーまで(工事中)。"
+    url: /ours/
+#  - title: "Theirs"
