@@ -1,0 +1,21 @@
+--
+layout: default
+---
+<div class="home">
+
+  <h1 class="page-heading">やる夫路線で作られたやる夫スレ</h1>
+
+  {% capture site_lang %}{{ site.lang | default: "en" }}{% endcapture %}
+
+  <ul class="post-archives">
+    {% for story in site.data.navigation.menu[0].stories %}
+      <li>
+        <span class="post-meta">{{ story.description }}</span>
+        <h2>
+            <a class="post-link" href="/{{ site.baseurl }}/categories/{{ story.category }}"{% if lang != empty %} lang="{{ lang }}"{% endif %}>{{ story.title }} </a>
+        </h2>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
