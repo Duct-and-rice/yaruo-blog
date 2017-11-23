@@ -20,5 +20,8 @@ menu:
         - title: "短編"
           category: short-others
           description: "珠玉がいっぱい。"
+        - title: "デス飲食短編勝負 地雷爆破デスマッチ"
+          category: short-foods
+          description: "腹が減っては戦ができぬ。"
     url: /others/
  
