@@ -3,19 +3,20 @@ layout: default
 ---
 <div class="home">
 
-  <h1 class="page-heading">人様のやる夫スレ</h1>
+    <h1 class="page-heading">人様のやる夫スレ</h1>
 
-  {% capture site_lang %}{{ site.lang | default: "en" }}{% endcapture %}
+    {% capture site_lang %}{{ site.lang | default: "en" }}{% endcapture %}
 
-  <ul class="post-archives">
-    {% for story in site.data.navigation.menu[1].stories %}
-      <li>
-        <span class="post-meta">{{ story.description }}</span>
-        <h2>
-            <a class="post-link" href="/{{ site.baseurl }}/categories/{{ story.category }}"{% if lang != empty %} lang="{{ lang }}"{% endif %}>{{ story.title }} </a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
+    <ul class="post-archives">
+        {% for story in site.data.navigation.menu[1].stories %}
+        <li>
+            <span class="post-meta">{{ story.description }}</span>
+            <h2>
+                {% capture category_link %}/categories/{{ story.category }}{% endcapture %}
+                <a class="post-link" href="{{ category_link | relative_url }}"{% if lang != empty %} lang="{{ lang }}"{% endif %}>{{ story.title }} </a>
+            </h2>
+        </li>
+        {% endfor %}
+    </ul>
 
 </div>
