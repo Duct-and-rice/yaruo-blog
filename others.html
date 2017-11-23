@@ -12,7 +12,7 @@ layout: default
       <li>
         <span class="post-meta">{{ story.description }}</span>
         <h2>
-            <a class="post-link" href="/categories/{{ story.category }}"{% if lang != empty %} lang="{{ lang }}"{% endif %}>{{ story.title }} </a>
+            <a class="post-link" href="/{{ site.baseurl }}/categories/{{ story.category }}"{% if lang != empty %} lang="{{ lang }}"{% endif %}>{{ story.title }} </a>
         </h2>
       </li>
     {% endfor %}
