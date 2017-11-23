@@ -15,10 +15,10 @@ menu:
           category: short
           description: "SCPからデリュケーまで(工事中)。"
     url: /ours/
-  - title: "Theirs"
+  - title: "Others"
     stories:
         - title: "短編"
           category: short-others
           description: "珠玉がいっぱい。"
-    url: /ours/
+    url: /others/
  
