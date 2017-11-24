@@ -40,7 +40,7 @@ task :new_thread do
     range = prompt.ask("Range?:", convert: :range, required: true) {|q| q.in('1-10000')}
     title = prompt.ask("Title?:", required: true)
     id = prompt.ask("ID?:", required: true)
-    categories_list = %w(yaruo-thread internet-casefile short)
+    categories_list = %w(yaruo-thread internet-casefile short short-others short-foods)
     categories = prompt.multi_select("Category?:", categories_list)
     min = range.min
     max = range.max
