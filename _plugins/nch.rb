@@ -89,7 +89,7 @@ module Jekyll
                 body = open(dat_url, 'r:cp932', header) {|w|
                     if w.status.include?"200"
                         body=w.read
-                        body=body.encode(Encoding::UTF_8)
+                        body=body.encode(Encoding::UTF_8, :invalid => :replace, :undef => :replace, :replace => '')
                         body
                     else
                         nil
