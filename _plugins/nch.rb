@@ -89,7 +89,10 @@ module Jekyll
                 body = open(dat_url, 'r:cp932', header) {|w|
                     if w.status.include?"200"
                         body=w.read
-                        body=body.encode(Encoding::UTF_8, :invalid => :replace, :undef => :replace, :replace => '')
+                        body=body.encode(Encoding::UTF_8,
+                                         :invalid => :replace,
+                                         :undef => :replace,
+                                         :replace => '')
                         body
                     else
                         nil
@@ -241,7 +244,7 @@ module Jekyll
                 tmp << res.header
                 tmp << %Q{</dt>\n}
                 tmp << %Q{<dd class="res-body aa">\n}
-                tmp << res.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>')
+                tmp << res.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>').gsub(/ttps?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+/,'<a href="h\&">\&</a>')
                 tmp << %Q{</dd>\n}
                 tmp << %Q{</dl>\n}
                 tmp << %Q{</dr>\n\n}
