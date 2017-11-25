@@ -16,7 +16,7 @@ task :deploy do
         end 
     end
     sh "ls -a _deploy | grep -v -E '\.$|\.\.$|\.git' | xargs rm -rf"
-    sh "jekyll b -I"
+    sh "jekyll b"
     sh "cp -r _site/* _deploy/"
     cd "_deploy" do
         sh "git add ."
