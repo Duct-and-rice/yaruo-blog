@@ -95,6 +95,7 @@ module Jekyll
                                          :replace => '')
                         body
                     else
+                        p w.status
                         nil
                     end
                 }
@@ -153,7 +154,6 @@ module Jekyll
             begin
                 if File.exist?(@path) then
                     data = CSV.read(@path, col_sep:"\t", headers:true)
-                    i=0
                     data=data.map {|res|
                         Post.new(res[0].to_i, res[1], res[2], res[3], res[4])
                     }
@@ -184,11 +184,12 @@ module Jekyll
 
         def load_posts
             cache = load_from_cache 
-            if cache && !ENV['JEKYLL_DEV'].nil?
-                return cache
+            if cache.nil? # && !ENV['JEKYLL_DEV'].nil?
+                @posts = save_cache(fetch)
+            else
+                @posts = cache
             end
-            return save_cache(fetch)
-            nil
+            return @posts
         end
 
         def to_liquid
@@ -232,7 +233,8 @@ module Jekyll
             range = yml['range']
             range = (range['min']-1)..(range['max']-1)
             posts = Thr.new(url)
-            if range.end < posts.posts.size-1 && ENV['JEKYLL_DEV'].nil?
+            posts.load_posts
+            if range.end > posts.posts.size-1 # && ENV['JEKYLL_DEV'].nil?
                 posts.fetch
             end
             posts = posts.posts[range]
