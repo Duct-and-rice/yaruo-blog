@@ -110,8 +110,6 @@ module Jekyll
         end
 
         def get_html(url)
-            header = {"User-Agent" => "Monazilla/1.00"}
-
             puts "  HTML Downloading:" + url
             html = open(url, 'r:eucjp') {|f|
                 body=f.read
@@ -232,6 +230,8 @@ module Jekyll
             url = yml['url']
             range = yml['range']
             range = (range['min']-1)..(range['max']-1)
+            rms = yml['rm']
+            inserts = yml['insert']
             posts = Thr.new(url)
             posts.load_posts
             if range.end > posts.posts.size-1 # && ENV['JEKYLL_DEV'].nil?
@@ -241,16 +241,34 @@ module Jekyll
 
             tmp=''
             posts.each_with_index do |res,i|
-                tmp << %Q{<dl class="res">\n}
-                tmp << %Q{<dt class="res-header">\n}
-                tmp << res.header
-                tmp << %Q{</dt>\n}
-                tmp << %Q{<dd class="res-body aa">\n}
-                tmp << res.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>').gsub(/ttps?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+/,'<a href="h\&">\&</a>')
-                tmp << %Q{</dd>\n}
-                tmp << %Q{</dl>\n}
-                tmp << %Q{</dr>\n\n}
-                tmp << "<!--more-->\n" if i == 0
+                if rms.nil? or rms.include?(res.index)
+                    
+                else
+                    ins = inserts.select {|insert| return insert['pos']==res.index}
+                    for s in ins
+                        r = posts[s['target']-range.start]
+                        tmp << %Q{<dl class="res">\n}
+                        tmp << %Q{<dt class="res-header">\n}
+                        tmp << r.header
+                        tmp << %Q{</dt>\n}
+                        tmp << %Q{<dd class="res-body aa">\n}
+                        tmp << r.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>').gsub(/ttps?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+/,'<a href="h\&">\&</a>')
+                        tmp << %Q{</dd>\n}
+                        tmp << %Q{</dl>\n}
+                        tmp << %Q{</dr>\n\n}
+                        tmp << "<!--more-->\n" if i == 0
+                    end
+                    tmp << %Q{<dl class="res">\n}
+                    tmp << %Q{<dt class="res-header">\n}
+                    tmp << res.header
+                    tmp << %Q{</dt>\n}
+                    tmp << %Q{<dd class="res-body aa">\n}
+                    tmp << res.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>').gsub(/ttps?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+/,'<a href="h\&">\&</a>')
+                    tmp << %Q{</dd>\n}
+                    tmp << %Q{</dl>\n}
+                    tmp << %Q{</dr>\n\n}
+                    tmp << "<!--more-->\n" if i == 0
+                end
             end
             tmp
         end
