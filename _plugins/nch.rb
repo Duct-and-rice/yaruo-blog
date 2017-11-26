@@ -241,22 +241,24 @@ module Jekyll
 
             tmp=''
             posts.each_with_index do |res,i|
-                if rms.nil? or rms.include?(res.index)
+                if !rms.nil? and rms.include?(res.index)
                     
                 else
-                    ins = inserts.select {|insert| return insert['pos']==res.index}
-                    for s in ins
-                        r = posts[s['target']-range.start]
-                        tmp << %Q{<dl class="res">\n}
-                        tmp << %Q{<dt class="res-header">\n}
-                        tmp << r.header
-                        tmp << %Q{</dt>\n}
-                        tmp << %Q{<dd class="res-body aa">\n}
-                        tmp << r.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>').gsub(/ttps?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+/,'<a href="h\&">\&</a>')
-                        tmp << %Q{</dd>\n}
-                        tmp << %Q{</dl>\n}
-                        tmp << %Q{</dr>\n\n}
-                        tmp << "<!--more-->\n" if i == 0
+                    if !inserts.nil?
+                        ins = inserts.select {|insert| return insert['pos']==res.index}
+                        for s in ins
+                            r = posts[s['target']-range.start]
+                            tmp << %Q{<dl class="res">\n}
+                            tmp << %Q{<dt class="res-header">\n}
+                            tmp << r.header
+                            tmp << %Q{</dt>\n}
+                            tmp << %Q{<dd class="res-body aa">\n}
+                            tmp << r.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>').gsub(/ttps?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+/,'<a href="h\&">\&</a>')
+                            tmp << %Q{</dd>\n}
+                            tmp << %Q{</dl>\n}
+                            tmp << %Q{</dr>\n\n}
+                            tmp << "<!--more-->\n" if i == 0
+                        end
                     end
                     tmp << %Q{<dl class="res">\n}
                     tmp << %Q{<dt class="res-header">\n}
