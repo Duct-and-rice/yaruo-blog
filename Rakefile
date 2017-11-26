@@ -22,13 +22,13 @@ task :deploy do
         sh "git add ."
         message = "deploy at #{Time.now}"
         sh "git commit -m '#{message}' || echo ''"
-        sh "git push --force https://duct-and-rice:#{ENV['GH_TOKEN']}@github.com/duct-and-rice/yaruo-blog "#>/dev/null 2>&1"
+        sh "git push --force https://duct-and-rice:#{ENV['GH_TOKEN']}@github.com/duct-and-rice/yaruo-blog >/dev/null 2>&1"
     end
     cd "cache" do
         sh "git add ."
         message = "deploy at #{Time.now}"
         sh "git commit -m '#{message}' || echo ''"
-        sh "git push --force https://duct-and-rice:#{ENV['GH_TOKEN']}@github.com/duct-and-rice/yaruo-blog "#>/dev/null 2>&1"
+        sh "git push --force https://duct-and-rice:#{ENV['GH_TOKEN']}@github.com/duct-and-rice/yaruo-blog >/dev/null 2>&1"
     end
 end
 
