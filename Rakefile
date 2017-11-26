@@ -34,16 +34,33 @@ end
 
 task :new_thread do
     prompt = TTY::Prompt.new
-    url = prompt.ask("URL?:", required: true) {|q| 
-        q.validate /(https?:\/\/.+)\/(?:test|bbs)\/(read(?:_archive)?\.cgi)\/(.+)\/(\d+)\/?/
-    }
-    range = prompt.ask("Range?:", convert: :range, required: true) {|q| q.in('1-10000')}
-    title = prompt.ask("Title?:", required: true)
-    id = prompt.ask("ID?:", required: true)
-    categories_list = %w(yaruo-thread internet-casefile short)
+    if ENV['url'].nil? then
+        url = prompt.ask("URL?:", required: true) {|q| 
+            q.validate (/(https?:\/\/.+)\/(?:test|bbs)\/(read(?:_archive)?\.cgi)\/(.+)\/(\d+)\/?/)
+        }
+    else 
+        url = ENV['url']
+    end
+    if ENV['max'].nil? and ENV['min'].nil? then
+        range = prompt.ask("Range?:", convert: :range, required: true) {|q| q.in('1-10000')}
+        min = range.min
+        max = range.max
+    else
+        max = ENV['max'].to_i 
+        min = ENV['min'].to_i
+    end
+    if ENV['title'].nil? then
+        title = prompt.ask("Title?:", required: true)
+    else
+        title=ENV['title']
+    end
+    if ENV['id'].nil? then
+        id = prompt.ask("ID?:", required: true)
+    else
+        id = ENV['id']
+    end
+    categories_list = %w(yaruo-thread internet-casefile short short-others short-foods)
     categories = prompt.multi_select("Category?:", categories_list)
-    min = range.min
-    max = range.max
     body = <<EOS
 ---
 layout: post
