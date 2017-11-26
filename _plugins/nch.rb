@@ -234,15 +234,17 @@ module Jekyll
             inserts = yml['insert']
             posts = Thr.new(url)
             posts.load_posts
-            if range.end > posts.posts.size-1 # && ENV['JEKYLL_DEV'].nil?
-                posts.fetch
+            if posts.posts[range].nil?
+                posts.save_cache(posts.fetch)
+            end
+            if posts.posts[range].nil?
+                p posts.posts.size,range, url,Digest::MD5.hexdigest(url)
             end
             posts = posts.posts[range]
 
             tmp=''
             posts.each_with_index do |res,i|
                 if !rms.nil? and rms.include?(res.index)
-                    
                 else
                     if !inserts.nil?
                         ins = inserts.select {|insert| return insert['pos']==res.index}
