@@ -7,3 +7,6 @@ categories: yaruo-thread short-others short-foods
 
 url: http://bbs.yaruyomi.com/test/read.cgi/ban/1511612533/
 range: {min: 128, max: 207}
+rm:
+ - 192
+ - 193
