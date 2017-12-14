@@ -84,5 +84,7 @@
   {% endif %}
 
   {% include google_analytics.html %}
-    <script>{% include instantclick.js %};InstantClick.init();</script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+        {% include instantclick.js %};InstantClick.init();})</script>
 </head>
