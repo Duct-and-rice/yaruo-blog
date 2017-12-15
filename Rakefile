@@ -36,7 +36,7 @@ task :build_on_netlify do
     if not Dir.exist?("cache")
         sh "git clone -b cache https://github.com/duct-and-rice/yaruo-blog cache"
         cd "cache" do
-            sh "git config user.email travis@travis"
+            sh "git config user.email netlify@netlify"
             sh "git config user.name duct-and-rice"
         end 
     end
