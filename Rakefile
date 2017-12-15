@@ -40,7 +40,7 @@ task :build_on_netlify do
             sh "git config user.name duct-and-rice"
         end 
     end
-    sh "jekyll b"
+    sh "jekyll b --baseurl ''"
     cd "cache" do
         sh "git add ."
         message = "deploy at #{Time.now}"
