@@ -185,5 +185,12 @@ $on-laptop:        800px;
     opacity: 1;
 }
 
+.site-subtitle {
+    font-size: 18px;
+    margin-left: 10px;
+    line-height: 56px;
+    font-style: italic;
+}
+
 // Import partials from the `whiteglass` theme.
 @import "whiteglass";
