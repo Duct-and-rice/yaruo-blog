@@ -32,6 +32,23 @@ task :deploy do
     end
 end
 
+task :build_on_netlify do
+    if not Dir.exist?("cache")
+        sh "git clone -b cache https://github.com/duct-and-rice/yaruo-blog cache"
+        cd "cache" do
+            sh "git config user.email travis@travis"
+            sh "git config user.name duct-and-rice"
+        end 
+    end
+    sh "jekyll b"
+    cd "cache" do
+        sh "git add ."
+        message = "deploy at #{Time.now}"
+        sh "git commit -m '#{message}' || echo ''"
+        sh "git push --force https://duct-and-rice:#{ENV['GH_TOKEN']}@github.com/duct-and-rice/yaruo-blog >/dev/null 2>&1"
+    end
+end
+
 task :new_thread do
     prompt = TTY::Prompt.new
     if ENV['url'].nil? then
