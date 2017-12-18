@@ -28,7 +28,7 @@
                 <ul class="menu-second">
                     {% for story in menu.stories %}
                     <li>
-                        <a href="{{ site.baseurl ? '/'+site.baseurl : '' }}/categories/{{ story.category }}">
+                        <a href="{{ "/categories/" + story.category | relative_url }}">
                         {{story.title}}
                         </a>
                     </li>
