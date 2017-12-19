@@ -84,7 +84,10 @@
   {% endif %}
 
   {% include google_analytics.html %}
+  {% if site.config.edition == 'Netlify Edition' %}
     <script>
       document.addEventListener("DOMContentLoaded", function(){
-        {% include instantclick.js %};InstantClick.init();})</script>
+        {% include instantclick.js %};InstantClick.init();})
+    </script>
+  {% endif %}
 </head>
