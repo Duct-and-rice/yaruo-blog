@@ -1,4 +1,10 @@
 /*
   Link: </fonts/Saitamaar.woff2>; rel=preload
+  
+/icons/*
+  Cache-Control max-age: 86400
+  Expires: 86400
+
+/fonts/*
   Cache-Control max-age: 86400
   Expires: 86400
