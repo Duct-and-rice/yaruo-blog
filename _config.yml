@@ -36,5 +36,4 @@ compress_html:
     endings:   all
     compress_javascript: false
 
-include:
-    - _headers
+include: ["_headers"]
