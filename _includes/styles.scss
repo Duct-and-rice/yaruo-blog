@@ -121,6 +121,12 @@ $on-laptop:        800px;
         &.hatenabookmark {
             background: #008FDE;
         }
+
+        img {
+            width:16px;
+            height:16px;
+            vertical-align: baseline;
+        }
     }
 
     .sr-only{
@@ -154,6 +160,7 @@ $on-laptop:        800px;
     margin-right:0.3em;
     font-size:130%;
 }
+
 
 .menu {
     display:inline-block;
