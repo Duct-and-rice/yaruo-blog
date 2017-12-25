@@ -35,3 +35,6 @@ compress_html:
     comments:  ["<!-- ", " -->"]
     endings:   all
     compress_javascript: false
+
+include:
+    - _headers
