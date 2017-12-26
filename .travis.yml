@@ -9,4 +9,4 @@ env:
 sudo: false
 branches:
   only:
-  - master
+  - github-redirection
