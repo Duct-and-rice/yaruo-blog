@@ -3,14 +3,14 @@ layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    {% if page.external-url %}
-      <h1 class="post-title" itemprop="name headline"><a href="{{ page.external-url }}">{{ page.title | escape }} &rarr;</a></h1>
-    {% else %}
-      <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
-    {% endif %}
-    <div class="post-head">
-        <p class="post-meta">
+    <header class="post-header">
+        {% if page.external-url %}
+        <h1 class="post-title" itemprop="name headline"><a href="{{ page.external-url }}">{{ page.title | escape }} &rarr;</a></h1>
+        {% else %}
+        <h1 class="post-title" itemprop="name headline">{{ page.title | escape }}</h1>
+        {% endif %}
+        <div class="post-head">
+            <p class="post-meta">
             <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
                 {{ page.date | date: "%b %-d, %Y" }}
             </time>
@@ -22,26 +22,42 @@ layout: default
             </span>
             {% endif %}
             {% if page.categories != empty %} • {% include category_links.html categories=page.categories %}{% endif %}
-        </p>
-        <p class="post-share">
-        <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}/{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf twitter">
-                    <img src="{{ '/icons/twitter.svg' | relative_url  }}">
-                </a>
-                <a href="https://facebook.com/sharer.php?u={{ site.url }}/{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf facebook">
-                    <img src="{{ '/icons/facebook.svg' | relative_url  }}">
-                </a>
-                <a href="https://plus.google.com/share?url={{ site.url }}/{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf google">
-                    <img src="{{ '/icons/gplus.svg' | relative_url  }}">
-                </a>
-                <a href="http://b.hatena.ne.jp/entry/{{ site.url }}/{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf hatenabookmark">
-                    <img src="{{ '/icons/hatena.svg' | relative_url  }}">
-                </a>
-        </p>
-    </div>
-  </header>
+            </p>
+            <p class="post-share">
+            <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}/{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf twitter">
+                {% if jekyll.environment == "development" %}
+                <img src="{{ '/icons/twitter.svg' | relative_url  }}">
+                {% else %}
+                {% svg icons/twitter.svg %}
+                {% endif %}
+            </a>
+            <a href="https://facebook.com/sharer.php?u={{ site.url }}/{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf facebook">
+                {% if jekyll.environment == "development" %}
+                <img src="{{ '/icons/facebook.svg' | relative_url  }}">
+                {% else %}
+                {% svg icons/facebook.svg %}
+                {% endif %}
+            </a>
+            <a href="https://plus.google.com/share?url={{ site.url }}/{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf google">
+                {% if jekyll.environment == "development" %}
+                <img src="{{ '/icons/gplus.svg' | relative_url  }}">
+                {% else %}
+                {% svg icons/gplus.svg %}
+                {% endif %}
+            </a>
+            <a href="http://b.hatena.ne.jp/entry/{{ site.url }}/{{ site.baseurl }}{{ page.url }}" rel="nofollow" target="_blank" class="lsf hatenabookmark">
+                {% if jekyll.environment == "development" %}
+                <img src="{{ '/icons/hatena.svg' | relative_url  }}">
+                {% else %}
+                {% svg icons/hatena.svg %}
+                {% endif %}
+            </a>
+            </p>
+        </div>
+    </header>
 
-  <div class="post-content" itemprop="articleBody">
-      {{ content }}
-  </div>
+    <div class="post-content" itemprop="articleBody">
+        {{ content }}
+    </div>
 
 </article>
