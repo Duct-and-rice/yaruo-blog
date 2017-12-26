@@ -1,6 +1,7 @@
 /*
   Link: </fonts/Saitamaar.woff2>; rel=preload; as=font
   Link: </icons/favicon.svg>; rel=preload; as=image
+  Link: </icons/favicon.png>; rel=preload; as=image
   
 /icons/*
   Cache-Control: public, max-age=31536000
