@@ -1,3 +1,4 @@
+# vim:set ts=4 sw=4
 require 'open-uri'
 require 'yaml'
 require 'faraday'
@@ -231,22 +232,36 @@ module Jekyll
             range = yml['range']
             range = (range['min']-1)..(range['max']-1)
             rms = yml['rm']
+            replaces = yml['replace']
             inserts = yml['insert']
-            posts = Thr.new(url)
-            posts.load_posts
-            if posts.posts[range].nil?
-                posts.save_cache(posts.fetch)
+            all_posts = Thr.new(url)
+            all_posts.load_posts
+            if all_posts.posts[range].nil?
+                all_posts.save_cache(posts.fetch)
             end
-            if posts.posts[range].nil?
-                p posts.posts.size,range, url,Digest::MD5.hexdigest(url)
+            if all_posts.posts[range].nil?
+                p all_posts.posts.size,range, url,Digest::MD5.hexdigest(url)
             end
-            posts = posts.posts[range]
+            posts = all_posts.posts[range]
 
             tmp=''
             posts.each_with_index do |res,i|
                 if !rms.nil? and rms.include?(res.index)
+                elsif !replaces.nil? and replaces.any?{|replace| replace['target']==res.index}
+                    nres = all_posts.posts[replaces.find_all {|replace| replace['target'] == res.index} [0]['replacement']-1]
+                    tmp << %Q{<dl class="res">\n}
+                    tmp << %Q{<dt class="res-header">\n}
+                    tmp << nres.header
+                    tmp << %Q{</dt>\n}
+                    tmp << %Q{<dd class="res-body aa">\n}
+                    tmp << nres.body.gsub(/http/, '<span>http<span>').gsub(/ftp/, '<span>ftp<span>').gsub(/ttps?:\/\/[\w\/:%#\$&\?\(\)~\.=\+\-]+/,'<a href="h\&">\&</a>')
+                    tmp << %Q{</dd>\n}
+                    tmp << %Q{</dl>\n}
+                    tmp << %Q{</dr>\n\n}
+                    tmp << "<!--more-->\n" if i == 0
                 else
                     if !inserts.nil?
+                        p inserts
                         ins = inserts.select {|insert| return insert['pos']==res.index}
                         for s in ins
                             r = posts[s['target']-range.start]
