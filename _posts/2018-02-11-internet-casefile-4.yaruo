@@ -6,7 +6,7 @@ categories: yaruo-thread internet-casefile
 ---
 
 url: http://bbs.yaruyomi.com/test/read.cgi/ban/1499589234
-range: {min: 632, max: 837}
+range: {min: 625, max: 837}
 replace:
   - target: 834
     replacement: 840
