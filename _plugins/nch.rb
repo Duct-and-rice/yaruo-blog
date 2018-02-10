@@ -237,7 +237,14 @@ module Jekyll
             all_posts = Thr.new(url)
             all_posts.load_posts
             if all_posts.posts[range].nil?
-                all_posts.save_cache(posts.fetch)
+                all_posts.save_cache(all_posts.fetch)
+            end
+            if !replaces.nil?
+            for replace in replaces
+                if all_posts.posts[replace['target']]
+                    all_posts.save_cache(all_posts.fetch)
+                end
+            end
             end
             if all_posts.posts[range].nil?
                 p all_posts.posts.size,range, url,Digest::MD5.hexdigest(url)
