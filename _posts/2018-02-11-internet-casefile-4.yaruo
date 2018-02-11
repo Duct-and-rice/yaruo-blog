@@ -10,3 +10,5 @@ range: {min: 625, max: 837}
 replace:
   - target: 834
     replacement: 840
+  - target: 692
+    replacement: 880
