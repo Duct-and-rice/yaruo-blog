@@ -40,7 +40,10 @@ task :build_on_netlify do
             sh "git config user.name duct-and-rice"
         end 
     end
-    sh "jekyll b --baseurl ''"
+    cd "cache" do
+      sh "git pull https://duct-and-rice:#{ENV['GH_TOKEN']}@github.com/duct-and-rice/yaruo-blog >/dev/null 2>&1"
+    end
+    sh "jekyll b --baseurl '' --trace"
     cd "cache" do
         sh "git add ."
         message = "deploy at #{Time.now}"
