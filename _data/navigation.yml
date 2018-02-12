@@ -11,6 +11,9 @@ menu:
         - title: "AAで学ぶネット事件簿"
           category: internet-casefile
           description: "2065年から見た、「インターネット草創期」の歴史。"
+        - title: "我ら野蛮なる野球民"
+          category: baseballer
+          description: "憎悪の唯一の解決手段は愛である"
         - title: "短編"
           category: short
           description: "SCPからデリュケーまで(工事中)。"
