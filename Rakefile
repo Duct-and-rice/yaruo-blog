@@ -41,7 +41,7 @@ task :build_on_netlify do
         end 
     end
     cd "cache" do
-      sh "git pull https://duct-and-rice:#{ENV['GH_TOKEN']}@github.com/duct-and-rice/yaruo-blog >/dev/null 2>&1"
+      sh "git pull https://duct-and-rice:#{ENV['GH_TOKEN']}@github.com/duct-and-rice/yaruo-blog cache"
     end
     sh "jekyll b --baseurl '' --trace"
     cd "cache" do
