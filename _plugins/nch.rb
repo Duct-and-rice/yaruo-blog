@@ -242,7 +242,7 @@ module Jekyll
             if !replaces.nil?
             for replace in replaces
                 if all_posts.posts[replace['target']]
-                    all_posts.save_cache(all_posts.fetch)
+                    all_posts.save_cache(all_posts.posts)
                 end
             end
             end
