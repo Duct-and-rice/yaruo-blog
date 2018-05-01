@@ -42,7 +42,9 @@ module Jekyll
             thr = part[4]
 
             mode=nil
+            is_euc=false
             if host.include? 'jbbs.shitaraba.net'
+                is_euc=true
                 if cgi == 'read.cgi'
                     dat_url = "#{host}/bbs/rawmode.cgi/#{board}/#{thr}"
                     mode = 'shitaraba'
@@ -56,7 +58,7 @@ module Jekyll
 
             body=nil
             if mode != 'log'
-                @@dat_cache[dat_url] ||= get_dat(dat_url)
+                @@dat_cache[dat_url] ||= get_dat(dat_url, is_euc)
                 body = @@dat_cache[dat_url]
             end
 
@@ -68,7 +70,7 @@ module Jekyll
                     posts=body.each_line.map { |line|
                         line.chomp!
                         i, name, mail, metadata, body = line.split('<>')
-                        Post.new(i, name,mail,metadata,body)
+                        Post.new(i, name.gsub(/<\/?b> ?/, '') ,mail,metadata,body)
                     }
                 else
                     i=0
@@ -83,11 +85,11 @@ module Jekyll
             posts
         end
 
-        def get_dat(dat_url)
+        def get_dat(dat_url, is_euc)
             header = {"User-Agent" => "Monazilla/1.00"}
             begin
                 puts "  DAT Downloading:" + dat_url
-                body = open(dat_url, 'r:cp932', header) {|w|
+                body = open(dat_url, is_euc ? 'r:eucjp' : 'r:cp932', header) {|w|
                     if w.status.include?"200"
                         body=w.read
                         body=body.encode(Encoding::UTF_8,
