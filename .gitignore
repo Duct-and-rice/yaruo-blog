@@ -1,11 +1,11 @@
+# dependencies
+node_modules
 
-# Created by https://www.gitignore.io/api/jekyll
+# logs
+npm-debug.log
 
-### Jekyll ###
-_site/
-.sass-cache/
-.jekyll-metadata
-_deploy
-cache
+# Nuxt build
+.nuxt
 
-# End of https://www.gitignore.io/api/jekyll
+# Nuxt generate
+dist
